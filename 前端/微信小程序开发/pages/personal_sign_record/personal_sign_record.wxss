@@ -1,0 +1,24 @@
+/* pages/sign_record/sign_record.wxss */
+#info{
+  position:relative;
+  left:5%;
+  top:20px;
+  font-weight: bold;
+  font-size:30px;
+}
+.record{
+  width: 90%;
+  margin-top:-60px;
+}
+.line {
+  border-bottom:1px solid #dadada;
+  padding-bottom:15px;
+  padding-top:15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.false{
+  color:red;
+}
+

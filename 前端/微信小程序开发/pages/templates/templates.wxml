@@ -1,0 +1,23 @@
+<!--pages/templates/templates.wxml-->
+<text>pages/templates/templates.wxml</text>
+<template name="chooseDate">
+  <picker class="weui-cells weui-cells_after-title" style='margin-top:100rpx;' mode="date" fields="month" value="{{date}}" start="2010-01-01" end="{{now}}" bindchange="bindDateChange">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active"> 
+      <view class="weui-cell__bd">选择月份</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{dates}}</view>
+    </view> 
+  </picker>
+</template>
+<template name="search">
+  <form bindsubmit='search'>
+    <view class='page_row'>
+      <view class="search">  
+        <view class="df search_arr">  
+          <icon class="searchicon" size='20' type='search'></icon>  
+          <input class="searchtext" placeholder="请输入关键字" value="{{searchValue}}" name="textinfo"/> 
+        </view>  
+      </view>
+      <button class='sousuo' form-type="submit">搜索</button>  
+    </view>
+  </form>
+</template>

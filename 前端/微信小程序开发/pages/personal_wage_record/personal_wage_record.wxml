@@ -1,0 +1,19 @@
+<import src="../templates/templates.wxml"></import>
+<template is="chooseDate" data="{{dates,now}}"/>
+<view class="container">
+  <text class="left">基础工资:</text><text class="right">{{arr.basicWage}}</text>
+</view>
+<view class="container" id="text2">
+  <text class="left">奖金补贴:</text><text id="bonus" class="right">{{arr.bonus>0?'+'+arr.bonus:arr.bonus}}</text>
+</view>
+<view class="container" id="text3">
+  <text class="left">缺勤扣除:</text><text id="absence" class="right">{{arr.absenceDeduction}}</text>
+</view>
+<view class="container" id="text4">
+  <text class="left">请假扣除:</text><text id="leave" class="right">{{arr.leaveDeduction}}</text>
+</view>
+<view class="container" id="text5">
+  <text class="left">实得工资:</text><text class="right">{{arr.salary}}元</text>
+</view>
+<view id="line"></view>
+

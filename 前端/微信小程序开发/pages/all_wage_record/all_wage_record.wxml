@@ -1,0 +1,22 @@
+<!--pages/all_wage_record/all_wage_record.wxml-->
+<import src="../templates/templates.wxml"></import>
+<template is="chooseDate" data="{{dates,now}}"/>
+<import src="../templates/templates.wxml"></import>
+<template is="search" data="{{dates,now}}"/>
+<view class="container">
+    <view class="table">
+        <view class="tr">
+            <view class="th">工号</view>
+            <view class="th">姓名</view>
+            <view class="th">实得工资</view>
+        </view>
+        <view class="tr" wx:for="{{arr}}">
+            <view class="td">{{item[0]}}</view>
+            <view class="td">{{item[2]}}</view>
+            <view class="td" style="text-align: right;">
+              <text style="margin-right:20%;">{{item[1]}}</text>         
+              <icon data-info="{{item[0]+','+item[2]+','+dates}}" class="iconfont icon-right" style="position:absolute;right:5%;" bindtap='seeDetail'></icon>
+            </view>
+        </view>
+    </view>
+</view>

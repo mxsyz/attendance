@@ -1,0 +1,5 @@
+<button type="primary" size="{{primarySize}}" loading="{{loading}}"  plain="{{plain}}" disabled="{{disabled}}" bindtap="sign"    class="signbutton"> 签到</button>
+<button type="primary" size="{{primarySize}}" loading="{{loading}}"  plain="{{plain}}" disabled="{{disabled}}" bindtap="personal_sign_record"    class="signbutton"> 个人签到记录</button>
+<button type="primary" size="{{primarySize}}" loading="{{loading}}"  plain="{{plain}}" disabled="{{disabled}}" bindtap="personal_wage_record"    class="signbutton"> 个人工资记录</button>
+<button type="primary" size="{{primarySize}}" loading="{{loading}}"  plain="{{plain}}" disabled="{{disabled}}" bindtap="all_sign_record"    class="signbutton"> 所有签到记录</button>
+<button type="primary" size="{{primarySize}}" loading="{{loading}}"  plain="{{plain}}" disabled="{{disabled}}" bindtap="all_wage_record"    class="signbutton"> 所有工资记录</button>

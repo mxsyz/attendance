@@ -1,0 +1,15 @@
+<!--pages/sign_record/sign_record.wxml-->
+<import src="../templates/templates.wxml"></import>
+<template is="chooseDate" data="{{dates,now}}"/>
+<text id="info">签到记录</text>
+<view class="container">
+    <view class="record">
+        <view class="line" wx:for="{{arr}}">           
+          <view>{{item.date}}</view>
+          <view wx:if="{{item.signIn==1}}">签到成功</view>
+          <view wx:else class="false">签到失败</view>
+          <view wx:if="{{item.signOut==1}}">签退成功</view>
+          <view wx:else class="false">签退失败</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<text style=" background:#FFF;  height:20px; width:50px; position:absolute; left:50px; top:16px; text-align:center;">签到</text>
+<text style=" background:#FFF; display:block; height:20px; width:50px; position:absolute; left:50px; top:127px; text-align:center">签退</text>
+<view class="sign_view">
+  <view class="signin">
+    <view class="font">{{signInTime}}</view>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}"  plain="{{plain}}" disabled="{{disabled1}}"  class="signbutton" bindtap="signin">{{message1}}</button>
+  </view>
+  <view class="signout">
+    <view class="font">{{signOutTime}}</view>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+    disabled="{{disabled2}}" class="signbutton" bindtap="signout"> {{message2}}</button>
+  </view>
+</view>
+<view class="tip">
+红圈内可签到
+</view>
+<map
+  id="map"
+  longitude="{{longitude}}"
+  latitude="{{latitude}}"
+  scale="16"
+  controls="{{controls}}"
+  bindcontroltap="controltap"
+  markers="{{markers}}"
+  bindmarkertap="markertap"
+  circles="{{circles}}"
+  polyline="{{polyline}}"
+  bindregionchange="regionchange"
+  show-location
+  style="width: 80%; height: 280px;margin-left:10%;margin-top:5%;"
+></map>

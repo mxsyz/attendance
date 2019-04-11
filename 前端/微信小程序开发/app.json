@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/sign/sign",
+    "pages/logs/logs",
+    "pages/personal_sign_record/personal_sign_record",
+    "pages/personal_wage_record/personal_wage_record",
+    "pages/all_sign_record/all_sign_record",
+    "pages/all_wage_record/all_wage_record",
+    "pages/wage_record_detail/wage_record_detail",
+    "pages/templates/templates"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}
