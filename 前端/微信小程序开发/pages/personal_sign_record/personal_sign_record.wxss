@@ -18,6 +18,9 @@
   display: flex;
   justify-content: space-between;
 }
+.right{
+  color:green;
+}
 .false{
   color:red;
 }

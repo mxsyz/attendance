@@ -1,4 +1,5 @@
 // pages/all_wage_record/all_wage_record.js
+const app = getApp();
 Page({
   data: {
     arr: {},
@@ -14,11 +15,13 @@ Page({
     })
     var array1 = new Array();
     array1 = e.detail.value.split("-");
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/allSalaryRecord?month=' +array1[1] + '&year=' + array1[0],
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;
@@ -43,11 +46,13 @@ Page({
     var dates=that.data.dates;
     var array1 = new Array();
     array1 = dates.split("-");
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/searchSalaryRecord?month=' + array1[1] + '&year=' + array1[0]+'&key='+val,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;
@@ -67,12 +72,14 @@ Page({
     that.setData({
       dates: Y + '-' + M,
       now: Y + '-' + M,
-    })
+    });
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/allSalaryRecord?month='+M+'&year='+Y,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;

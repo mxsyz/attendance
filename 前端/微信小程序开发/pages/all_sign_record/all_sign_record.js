@@ -1,4 +1,5 @@
 // pages/all_sign_record/all_sign_record.js
+const app = getApp();
 Page({
   data: {
     dates: "",
@@ -8,11 +9,13 @@ Page({
   search: function (e) {
     var that = this;
     var val = e.detail.value.textinfo;
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/searchSignRecord?date=' + that.data.dates+'&key='+val,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;
@@ -28,11 +31,13 @@ Page({
     that.setData({
       dates: e.detail.value
     })
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/allSignRecord?date=' + that.data.dates,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;
@@ -53,11 +58,13 @@ Page({
       dates: Y + '-' + M + '-' + D,
       now: Y + '-' + M + '-' + D,
     })
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/allSignRecord?date='+that.data.dates,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;

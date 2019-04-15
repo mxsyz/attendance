@@ -1,6 +1,6 @@
 //sign.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
 Page({
 
   /**
@@ -68,16 +68,28 @@ Page({
         })
         var distance = that.getDistance(that.data.latitude, longitude, app.globalData.latitude, app.globalData.longitude);
         if (distance <= that.data.circles[0].radius&&nowhm>=that.data.sit&&nowhm<=(that.data.sit+60)){
+          var cookie = app.globalData.Cookie;
           wx.request({
             url: 'http://localhost:8080/signIn?jobNumber=' + app.globalData.jobNumber + '&date=' + now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate(),
             method: 'GET',
             header: {
-              'content-type': 'application/json'
+              'content-type': 'application/json',
+              'Cookie': cookie,
             },
             success: function (res) {
               that.setData({
                 disabled1: true,
                 message1: "已签到",
+              })
+              wx.showToast({
+                title: "签到成功",
+                icon: 'success',//图标，支持"success"、"loading" 
+                image: '',//自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000,//提示的延迟时间，单位毫秒，默认：1500 
+                mask: false,//是否显示透明蒙层，防止触摸穿透，默认：false 
+                success: function () { },
+                fail: function () { },
+                complete: function () { }
               })
             }
           })
@@ -87,11 +99,31 @@ Page({
             disabled1: true,
             message1: "签到",
           })
+          wx.showToast({
+            title: "超出签到范围",
+            icon: '',//图标，支持"success"、"loading" 
+            image: '../../icons/failure.png',//自定义图标的本地路径，image 的优先级高于 icon
+            duration: 2000,//提示的延迟时间，单位毫秒，默认：1500 
+            mask: false,//是否显示透明蒙层，防止触摸穿透，默认：false 
+            success: function () { },
+            fail: function () { },
+            complete: function () { }
+          })
         }
         else{
           that.setData({
             disabled1: true,
             message1: "未签到",
+          })
+          wx.showToast({
+            title: "签到超时",
+            icon: '',//图标，支持"success"、"loading" 
+            image: '../../icons/failure.png',//自定义图标的本地路径，image 的优先级高于 icon
+            duration: 2000,//提示的延迟时间，单位毫秒，默认：1500 
+            mask: false,//是否显示透明蒙层，防止触摸穿透，默认：false 
+            success: function () { },
+            fail: function () { },
+            complete: function () { }
           })
         }
       }
@@ -115,16 +147,28 @@ Page({
         })
         var distance = that.getDistance(that.data.latitude, longitude, app.globalData.latitude, app.globalData.longitude);
         if (distance <= that.data.circles[0].radius&&nowhm >= that.data.sot && nowhm <= (that.data.sot + 60)) {
+          var cookie = app.globalData.Cookie;
           wx.request({
             url: 'http://localhost:8080/signOut?jobNumber=' + app.globalData.jobNumber + '&date=' + now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate(),
             method: 'GET',
             header: {
-              'content-type': 'application/json'
+              'content-type': 'application/json',
+              'Cookie': cookie,
             },
             success: function (res) {
               that.setData({
                 disabled2: true,
                 message2: "已签退",
+              })
+              wx.showToast({
+                title: "签退成功",
+                icon: 'success',//图标，支持"success"、"loading" 
+                image: '',//自定义图标的本地路径，image 的优先级高于 icon
+                duration: 2000,//提示的延迟时间，单位毫秒，默认：1500 
+                mask: false,//是否显示透明蒙层，防止触摸穿透，默认：false 
+                success: function () { },
+                fail: function () { },
+                complete: function () { }
               })
             }
           })
@@ -134,11 +178,31 @@ Page({
             disabled2: true,
             message2: "签退",
           })
+          wx.showToast({
+            title: "超出签退范围",
+            icon: '',//图标，支持"success"、"loading" 
+            image: '../../icons/failure.png',//自定义图标的本地路径，image 的优先级高于 icon
+            duration: 2000,//提示的延迟时间，单位毫秒，默认：1500 
+            mask: false,//是否显示透明蒙层，防止触摸穿透，默认：false 
+            success: function () { },
+            fail: function () { },
+            complete: function () { }
+          })
         }
         else {
           that.setData({
             disabled2: true,
             message2: "未签退",
+          })
+          wx.showToast({
+            title: "签退超时",
+            icon: '',//图标，支持"success"、"loading" 
+            image: '../../icons/failure.png',//自定义图标的本地路径，image 的优先级高于 icon
+            duration: 2000,//提示的延迟时间，单位毫秒，默认：1500 
+            mask: false,//是否显示透明蒙层，防止触摸穿透，默认：false 
+            success: function () { },
+            fail: function () { },
+            complete: function () { }
           })
         }
       }
@@ -184,11 +248,14 @@ Page({
         var day = now.getDate();
         console.log(year + " " + month + " " + day);
         var nowhm = now.getHours() * 60 + now.getMinutes();
+        var cookie = app.globalData.Cookie;
+        console.log(cookie);
         wx.request({
           url: 'http://localhost:8080/signRecord?date=' + year + '-' + month + '-' + day + '&jobNumber=' + app.globalData.jobNumber,
           method: 'GET',
           header: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            'Cookie': cookie,
           },
           success: function (res) {
             var array = res.data;

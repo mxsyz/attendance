@@ -28,11 +28,6 @@ public class SignRecordServiceImpl implements SignRecordSerivce {
         int day1=c.get(Calendar.DATE);
         int year2=Integer.parseInt(array[0]);
         int month2=Integer.parseInt(array[1]);
-        System.out.println(year1);
-        System.out.println(month1);
-        System.out.println(day1);
-        System.out.println(year2);
-        System.out.println(month2);
         c.set(year2,month2, 0); //输入类型为int类型
         int num=c.get(Calendar.DAY_OF_MONTH);
         List<SignRecord> list1=new ArrayList<>();

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class SignRuleController {
     @Autowired
@@ -15,5 +17,11 @@ public class SignRuleController {
     @ResponseBody
     public SignRule getSignRule(){
         return signRuleService.getSignRule();
+    }
+    @RequestMapping(value="/cookie")
+    @ResponseBody
+    public String getCookie(HttpServletRequest request){
+        String sessionId = request.getSession().getId();
+        return sessionId;
     }
 }

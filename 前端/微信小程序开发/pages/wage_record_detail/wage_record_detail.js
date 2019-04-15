@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
   data: {
     jobNumber:"",
@@ -18,11 +19,13 @@ Page({
     var name=options.name;
     var month=options.month;
     var year=options.year;
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/personalSalary?month=' + month + '&year=' + year+'&jobNumber='+jobNumber,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;

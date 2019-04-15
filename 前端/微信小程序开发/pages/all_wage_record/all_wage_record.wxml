@@ -10,7 +10,7 @@
             <view class="th">姓名</view>
             <view class="th">实得工资</view>
         </view>
-        <view class="tr" wx:for="{{arr}}">
+        <view class="tr" wx:for="{{arr}}" wx:key="index">
             <view class="td">{{item[0]}}</view>
             <view class="td">{{item[2]}}</view>
             <view class="td" style="text-align: right;">

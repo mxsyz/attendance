@@ -14,13 +14,24 @@ App({
       }
     })
     wx.request({
+      url: 'http://localhost:8080/cookie',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+      },
+      success: function (res) {
+        that.globalData.Cookie = 'JSESSIONID=' + res.data;
+        console.log(that.globalData.Cookie);
+      }
+    })
+    wx.request({
       url: 'http://localhost:8080/signRule',
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie':this.globalData.Cookie,
       },
       success: function (res) {
-        console.log(res.data);
         that.globalData.signInTime=res.data.signInTime;
         that.globalData.signOutTime=res.data.signOutTime;
         that.globalData.latitude=res.data.latitude;
@@ -57,5 +68,6 @@ App({
     latitude:'',
     longitude:'',
     radius:'',
+    Cookie: '',
   }
 })

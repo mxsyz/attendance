@@ -15,7 +15,7 @@
             <view class="th">签到</view>
             <view class="th">签退</view>
         </view>
-        <view class="tr" wx:for="{{arr}}">
+        <view class="tr" wx:for="{{arr}}" wx:key="index">
             <view class="td">{{item[0]}}</view>
             <view class="td">{{item[1]}}</view>
             <view class="td" wx:if="{{item[2]==1}}">√</view>

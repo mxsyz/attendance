@@ -18,12 +18,14 @@ Page({
     array1 = e.detail.value.split("-");
     that.setData({
       dates: e.detail.value
-    })
+    });
+    var cookie = app.globalData.Cookie;
     wx.request({
       url: 'http://localhost:8080/personalSignRecord?jobNumber=' + app.globalData.jobNumber + '&month=' + that.data.dates,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;
@@ -66,12 +68,14 @@ Page({
     that.setData({
       dates: Y + '-' + M,
       now:Y+'-'+M
-    })   
+    });
+    var cookie = app.globalData.Cookie;   
     wx.request({
       url: 'http://localhost:8080/personalSignRecord?jobNumber='+app.globalData.jobNumber+'&month=' + that.data.dates,
       method: 'GET',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': cookie,
       },
       success: function (res) {
         var array = res.data;
