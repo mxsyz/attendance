@@ -7,13 +7,21 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name="`leave&field`")
-@IdClass(JobNumberAndDate.class)
+@Table(name="leave_and_field")
+//@IdClass(JobNumberAndDate.class)
 public class LeaveAndField {
+    public LeaveAndField(String id)
+    {
+        this.id = id;
+    }
+    public LeaveAndField(){
+
+    }
     @Id
+    @Column(name="id",nullable=false,updatable = false)
+    private String id;
     @Column(name = "job_number", nullable = false)
     private int jobNumber;
-    @Id
     @Column(name="date",nullable=false)
     private Date date;
     @Enumerated(EnumType.STRING)
@@ -24,6 +32,12 @@ public class LeaveAndField {
     private State state;
     @Column(name="description")
     private String description;
+    public String getId(){
+        return id;
+    }
+    public void setId(String id){
+        this.id=id;
+    }
     public int getJobNumber(){
         return jobNumber;
     }
@@ -53,5 +67,36 @@ public class LeaveAndField {
     }
     public void setDescription(String description){
         this.description=description;
+    }
+    public String getReasonStr(){
+        if(reason==null){
+            return null;
+        }else{
+            return String.valueOf(reason);
+        }
+    }
+    public String getStateStr(){
+        if(state==null){
+            return null;
+        }else{
+            return String.valueOf(state);
+        }
+    }
+    public int getReasonIndex(){
+        if(reason==null){
+            return 3;
+        }else{
+            return reason.ordinal();
+        }
+    }
+    public int getStateIndex(){
+        if(state==null){
+            return 3;
+        }else{
+            return state.ordinal();
+        }
+    }
+    public String toString(){
+        return id+" "+jobNumber+" "+date+" "+reason+" "+description+" "+state;
     }
 }
